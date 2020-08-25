@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">    
+  <style>
+    .light-available {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGw9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDE2IDE2IiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPjxtZXRhZGF0YT4gUHJvZHVjZWQgYnkgT21uaUdyYWZmbGUgNi42LjEgPGRjOmRhdGU+MjAxNi0xMS0xNiAwODozNTo0OSArMDAwMDwvZGM6ZGF0ZT48L21ldGFkYXRhPjxkZWZzLz48ZyBzdHJva2U9Im5vbmUiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtZGFzaGFycmF5PSJub25lIiBmaWxsPSJub25lIiBmaWxsLW9wYWNpdHk9IjEiPjx0aXRsZT5DYW52YXMgMTE8L3RpdGxlPjxnPjx0aXRsZT5MYXllciAxPC90aXRsZT48Y2lyY2xlIGN4PSI4IiBjeT0iOCIgcj0iOCIgZmlsbD0iIzI4Yzk0MCIvPjwvZz48L2c+PC9zdmc+);
+    background-repeat: no-repeat;
+}
+  </style>  
+</head>
+<body>          
+<div class="container">    
+  <h2 class="text-center py-3">Dashboard</h2>  
+  <div class="row pl-3 mb-5">
+    <div>
+        <div class="col-sm-12 light-available ml-auto mr-3"><span class="pl-3">Green</span></div>
+        <div class="col-sm-12 light-available ml-auto mr-3"><span class="pl-3">Orange</span></div>
+        <div class="col-sm-12 light-available ml-auto mr-3"><span class="pl-3">Red</span></div>
+    </div>
+  </div>
+ 
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Build Status</th>
+        <th>QA Status</th>
+        <th>Promotion to Beta</th>
+        <th>Promotion to Store</th>
+        <th>Region</th>        
+      </tr>
+    </thead>
+    <tbody *ngIf="data">
+      <tr *ngFor="let build of data.builds">        
+        <td>{{build.number}}</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>july@example.com</td>
+        <td>july@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td>july@example.com</td>
+        <td>july@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>july@example.com</td>
+        <td>july@example.com</td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

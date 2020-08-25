@@ -1,0 +1,8 @@
+{
+    "/job/*": {
+        "target": "http://34.106.159.232",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true  
+    }
+}
