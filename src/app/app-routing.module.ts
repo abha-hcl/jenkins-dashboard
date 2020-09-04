@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BuildDashboardComponent } from './build-dashboard/build-dashboard.component';
 
 const routes: Routes = [
-  { path: 'build-dashboard', component: BuildDashboardComponent }
+  { path: 'dashboard', component: BuildDashboardComponent }
 ];
 
 @NgModule({

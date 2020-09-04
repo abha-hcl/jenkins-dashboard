@@ -13,12 +13,9 @@ export class DataService {
  getBuildInformation() : Observable<any> {
   const httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:4200',
-      'Access-Control-Allow-Credentials': 'true',
-      'Authorization': 'Basic YWRtaW46YWRtaW4='
-    }),
-    withCredentials: true
+      'Content-Type':  'application/json',     
+      'Authorization': 'Basic NzAyNTcyNTY6cmF5c2Fpbmk='
+    })
   };
 /*   let headers: HttpHeaders = new HttpHeaders();
   headers = headers.append('Accept', 'application/json');
