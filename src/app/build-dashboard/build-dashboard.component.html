@@ -30,6 +30,9 @@
               <th>PROMOTION TO BETA</th>
               <th>PROMOTION TO STORE</th>
               <th>BUILD NUMBER</th>
+	      <th>BUILD DURATION</th>
+	      <th>BUILD VERSION</th>
+	      <th>BUILD NAME</th>
             </tr>
           </thead>          
           <tbody *ngIf ="buildInfo && buildInfo.status">
@@ -38,13 +41,19 @@
             <td><i class= "fa fa-circle text-success"></i> {{ buildInfo.statusValue }}</td>
             <td><i class= "fa fa-circle text-success"></i> {{ buildInfo.statusValue }}</td>
             <td> {{ buildInfo.number }}</td>
+	    <td>{{buildInfo.duration}}</td>
+	    <td> {{buildInfo.buildVersion }}</td>
+            <td> {{ buildInfo.buildName }} </td>			   
           </tbody>
-          <tbody *ngIf = "buildInfo && !buildInfo.status">
+          <tbody *ngIf = "(buildInfo | keyvalue)?.length && !buildInfo.status">
             <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Build'])"></i> {{ selectedRegionBuild['Build'] }} </td>
             <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Automation Test'])"></i> {{ selectedRegionBuild['Automation Test'] }}</td>
             <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Build Promtion'])"></i> {{ selectedRegionBuild['Build Promtion'] }}</td>
-            <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Store Build and Signing '])"></i> {{ selectedRegionBuild['Store Build and Signing '] }}</td>
+            <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Store Build and Signing '])"></i> {{ selectedRegionBuild['Store Build and Signing '] }}</td>	    
             <td>{{ buildInfo.number }}</td>
+	     <td>{{ buildInfo.duration }}</td>
+	      <td>{{ buildInfo.buildVersion }}</td>
+	       <td>{{ buildInfo.buildName }}</td>
           </tbody>
         </table>
       </div>

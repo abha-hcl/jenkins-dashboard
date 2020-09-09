@@ -4,10 +4,9 @@
 
 export const environment = {
   production: false,
-  // jenkinsUrl: 'http://10.8.12.239:8080/job/r3-mobile-sol-dryrun/api/json?tree=builds[number,result,duration,actions[parameters[name,value]]]'
-  jenkinsUrl: 'http://35.184.96.216/job/mobileBuild/api/json'
-  
-};
+  getallBuilds: 'http://35.184.96.216/job/mobileBuild/api/json?tree=builds[number,result,duration,actions[parameters[name,value]]]',
+  getBuildInformation: 'http://35.184.96.216/job/mobileBuild/'  
+  };
 
 /*
  * For easier debugging in development mode, you can import the following file
