@@ -25,35 +25,35 @@
         <table class="table table-bordered">
           <thead>
             <tr>
+               <th>RELEASE NAME</th>
+              <th>BUILD NUMBER</th>
               <th>BUILD STATUS</th>
               <th>QA STATUS</th>
               <th>PROMOTION TO BETA</th>
               <th>PROMOTION TO STORE</th>
-              <th>BUILD NUMBER</th>
-	      <th>BUILD DURATION</th>
-	      <th>BUILD VERSION</th>
-	      <th>BUILD NAME</th>
-            </tr>
+	       <th>BUILD DURATION</th>
+      	      <th>BUILD VERSION</th>
+            </tr>		    
           </thead>          
           <tbody *ngIf ="buildInfo && buildInfo.status">
-            <td><i class= "fa fa-circle text-success"></i> {{ buildInfo.statusValue }}</td>
-            <td><i class= "fa fa-circle text-success"></i> {{ buildInfo.statusValue }}</td>
-            <td><i class= "fa fa-circle text-success"></i> {{ buildInfo.statusValue }}</td>
-            <td><i class= "fa fa-circle text-success"></i> {{ buildInfo.statusValue }}</td>
+            <td> {{ buildInfo.buildName }} </td>
             <td> {{ buildInfo.number }}</td>
+	    <td><i class= "fa fa-circle text-success"></i><a href="{{ buildInfo.redirectUrl }}" target="_blank"> {{ buildInfo.statusValue }}</a></td>
+	    <td><i class= "fa fa-circle text-success"></i><a href="{{buildInfo.redirectUrl}}" target="_blank">  {{ buildInfo.statusValue }}</a></td>
+	    <td><i class= "fa fa-circle text-success"></i><a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ buildInfo.statusValue }}</a></td>
+	    <td><i class= "fa fa-circle text-success"></i> <a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ buildInfo.statusValue }}</a></td>            
 	    <td>{{buildInfo.duration}}</td>
-	    <td> {{buildInfo.buildVersion }}</td>
-            <td> {{ buildInfo.buildName }} </td>			   
+      	    <td> {{buildInfo.buildVersion }}</td>		  
           </tbody>
-          <tbody *ngIf = "(buildInfo | keyvalue)?.length && !buildInfo.status">
-            <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Build'])"></i> {{ selectedRegionBuild['Build'] }} </td>
-            <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Automation Test'])"></i> {{ selectedRegionBuild['Automation Test'] }}</td>
-            <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Build Promtion'])"></i> {{ selectedRegionBuild['Build Promtion'] }}</td>
-            <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Store Build and Signing '])"></i> {{ selectedRegionBuild['Store Build and Signing '] }}</td>	    
+          <tbody *ngIf = "buildInfo  && !buildInfo.status">
+            <td> {{ buildInfo.buildName }} </td>
             <td>{{ buildInfo.number }}</td>
-	     <td>{{ buildInfo.duration }}</td>
-	      <td>{{ buildInfo.buildVersion }}</td>
-	       <td>{{ buildInfo.buildName }}</td>
+	    <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Build'])"></i><a href="{{buildInfo.redirectUrl}}" target="_blank">  {{ selectedRegionBuild['Build'] }}</a> </td>
+	    <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Automation Test'])"></i><a href="{{buildInfo.redirectUrl}}" target="_blank">  {{ selectedRegionBuild['Automation Test'] }}</a></td>
+	    <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Build Promtion'])"></i><a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ selectedRegionBuild['Build Promtion'] }}</a></td>
+	    <td><i class="fa fa-circle" [ngClass]="checkBuildStatus(selectedRegionBuild['Store Build and Signing '])"></i> <a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ selectedRegionBuild['Store Build and Signing '] }}</a></td>	    
+	          <td>{{ buildInfo.duration }}</td>
+      	          <td>{{ buildInfo.buildVersion }}</td>		  
           </tbody>
         </table>
       </div>

@@ -65,6 +65,16 @@ export class BuildDashboardComponent implements OnInit {
       this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/6000).toFixed(2) + 'mins': 'N/A';
       this.buildInfo.buildVersion = '1.0';
       this.buildInfo.buildName = 'Harrow';
+      this.buildInfo.redirectUrl = 'http://35.184.96.216/job/mobileBuild/' + this.buildInfo.number +'/display/redirect';
+      } else if(this.selectedRegionBuild && this.selectedRegionBuild.result === null) {
+          this.buildInfo.statusValue = 'IN_PROGRESS';
+	  this.buildInfo.status = false;
+	  this.buildInfo.number = this.selectedRegionBuild.number;
+	  this.buildInfo.redirectUrl = 'http://35.184.96.216/job/mobileBuild/' + this.buildInfo.number +'/display/redirect';
+	  this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/6000).toFixed(2) + 'mins': 'N/A';
+          this.buildInfo.buildVersion = '1.0';
+	  this.buildInfo.buildName = 'Harrow';
+	  this.fetchFailureInformation(this.buildInfo.number);
       } else {
       	this.selectedRegionBuild= null;
       }
@@ -99,7 +109,12 @@ export class BuildDashboardComponent implements OnInit {
 			           this.selectedRegionBuild[stage.name] = stage.status;
 				           }
 					         }     
-						       console.log('this.filteredData in failure is', this.selectedRegionBuild);
+						 console.log('this.filteredData in failure is', this.selectedRegionBuild);
+						 this.failureStages.forEach((value) => {
+						       if(!this.selectedRegionBuild[value]) {
+							       this.selectedRegionBuild[value] = "PENDING";
+						       }
+						});
 
 		      });
 		        }
