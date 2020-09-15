@@ -38,10 +38,10 @@
           <tbody *ngIf ="buildInfo && buildInfo.status">
             <td> {{ buildInfo.buildName }} </td>
             <td> {{ buildInfo.number }}</td>
-	    <td><i class= "fa fa-circle text-success"></i><a href="{{ buildInfo.redirectUrl }}" target="_blank"> {{ buildInfo.statusValue }}</a></td>
-	    <td><i class= "fa fa-circle text-success"></i><a href="{{buildInfo.redirectUrl}}" target="_blank">  {{ buildInfo.statusValue }}</a></td>
-	    <td><i class= "fa fa-circle text-success"></i><a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ buildInfo.statusValue }}</a></td>
-	    <td><i class= "fa fa-circle text-success"></i> <a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ buildInfo.statusValue }}</a></td>            
+	    <td><i class= "fa fa-circle" [ngClass]="checkBuildStatus(buildInfo.statusValue)"></i><a href="{{ buildInfo.redirectUrl }}" target="_blank"> {{ buildInfo.statusValue }}</a></td>
+	    <td><i class= "fa fa-circle" [ngClass]="checkBuildStatus(buildInfo.statusValue)"></i><a href="{{buildInfo.redirectUrl}}" target="_blank">  {{ buildInfo.statusValue }}</a></td>
+	    <td><i class= "fa fa-circle" [ngClass]="checkBuildStatus(buildInfo.statusValue)"></i><a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ buildInfo.statusValue }}</a></td>
+	    <td><i class= "fa fa-circle" [ngClass]="checkBuildStatus(buildInfo.statusValue)"></i> <a href="{{buildInfo.redirectUrl}}" target="_blank"> {{ buildInfo.statusValue }}</a></td>            
 	    <td>{{buildInfo.duration}}</td>
       	    <td> {{buildInfo.buildVersion }}</td>		  
           </tbody>

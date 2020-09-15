@@ -60,7 +60,12 @@ export class BuildDashboardComponent implements OnInit {
 	  this.buildInfo.status = false;
 	  this.buildInfo.number = this.selectedRegionBuild.number;
 	  this.fetchFailureInformation(this.buildInfo.number);
-          break;
+	  break;
+        case 'ABORTED':
+            this.buildInfo.statusValue = 'ABORTED';
+            this.buildInfo.status = true;
+            this.buildInfo.number = this.selectedRegionBuild.number;            
+            break;		
       }
       this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/6000).toFixed(2) + 'mins': 'N/A';
       this.buildInfo.buildVersion = '1.0';
@@ -110,6 +115,7 @@ export class BuildDashboardComponent implements OnInit {
 				           }
 					         }     
 						 console.log('this.filteredData in failure is', this.selectedRegionBuild);
+						 this.buildInfo.duration = this.buildFailureData.durationMillis? (this.buildFailureData.durationMillis/6000).toFixed(2) + 'mins': 'N/A';
 						 this.failureStages.forEach((value) => {
 						       if(!this.selectedRegionBuild[value]) {
 							       this.selectedRegionBuild[value] = "PENDING";
