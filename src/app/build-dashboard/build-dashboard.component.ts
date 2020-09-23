@@ -55,7 +55,7 @@ export class BuildDashboardComponent implements OnInit {
 	  this.buildInfo.status = true;
 	  this.buildInfo.number = this.selectedRegionBuild.number;
           break;
-        case 'FAILURE':
+        case 'FAILURE' || null:
           this.buildInfo.statusValue = 'FAILURE';
 	  this.buildInfo.status = false;
 	  this.buildInfo.number = this.selectedRegionBuild.number;
@@ -63,11 +63,12 @@ export class BuildDashboardComponent implements OnInit {
 	  break;
         case 'ABORTED':
             this.buildInfo.statusValue = 'ABORTED';
-            this.buildInfo.status = true;
-            this.buildInfo.number = this.selectedRegionBuild.number;            
+	    this.buildInfo.status = false;
+    	    this.buildInfo.number = this.selectedRegionBuild.number;
+	    this.fetchFailureInformation(this.buildInfo.number);		
             break;		
       }
-      this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/6000).toFixed(2) + 'mins': 'N/A';
+      this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/3600000).toFixed(2) + ' hr(s)': 'N/A';
       this.buildInfo.buildVersion = '1.0';
       this.buildInfo.buildName = 'Harrow';
       this.buildInfo.redirectUrl = 'http://35.184.96.216/job/mobileBuild/' + this.buildInfo.number +'/display/redirect';
@@ -76,7 +77,7 @@ export class BuildDashboardComponent implements OnInit {
 	  this.buildInfo.status = false;
 	  this.buildInfo.number = this.selectedRegionBuild.number;
 	  this.buildInfo.redirectUrl = 'http://35.184.96.216/job/mobileBuild/' + this.buildInfo.number +'/display/redirect';
-	  this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/6000).toFixed(2) + 'mins': 'N/A';
+	  this.buildInfo.duration = this.selectedRegionBuild.duration? (this.selectedRegionBuild.duration/3600000).toFixed(2) + ' hr': 'N/A';
           this.buildInfo.buildVersion = '1.0';
 	  this.buildInfo.buildName = 'Harrow';
 	  this.fetchFailureInformation(this.buildInfo.number);
@@ -113,14 +114,19 @@ export class BuildDashboardComponent implements OnInit {
 		         if (this.failureStages.indexOf(stage.name) > -1) {
 			           this.selectedRegionBuild[stage.name] = stage.status;
 				           }
-					         }     
+					         }
 						 console.log('this.filteredData in failure is', this.selectedRegionBuild);
-						 this.buildInfo.duration = this.buildFailureData.durationMillis? (this.buildFailureData.durationMillis/6000).toFixed(2) + 'mins': 'N/A';
+						 this.buildInfo.duration = this.buildFailureData.durationMillis? (this.buildFailureData.durationMillis/3600000).toFixed(2) + ' hr(s)': 'N/A';
+						 
 						 this.failureStages.forEach((value) => {
 						       if(!this.selectedRegionBuild[value]) {
 							       this.selectedRegionBuild[value] = "PENDING";
-						       }
-						});
+							       }
+
+							       });
+							       if(this.selectedRegionBuild['Build Promtion'] && this.selectedRegionBuild['Build Promtion'] === 'PAUSED_PENDING_INPUT') {
+							       this.selectedRegionBuild['Build Promtion'] = 'INPUT AWAITED';
+							       }
 
 		      });
 		        }
